@@ -18,7 +18,6 @@ Note: A working example of a backend REST API service, which includes a fully co
   - **Valid Redirect URIs**: `http://localhost:5173/*`
   - **Web Origins**: `http://localhost:5173`
   - **Valid Post Logout Redirect URIs**: `http://localhost:5173/*`
-  - **Roles**: any roles returned by Keycloak must be included in the type `src/features/auth/types/ApplicationRole.ts`
 
 ### Running application:
 **Install dependencies**

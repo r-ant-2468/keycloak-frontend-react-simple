@@ -1,7 +1,6 @@
 import {useAuth} from "react-oidc-context";
 import {useMemo} from "react";
 import type {AuthSession} from "../types/AuthSession.ts";
-import type {ApplicationRole} from "../types/ApplicationRole.ts";
 import {signoutRedirectConfig} from "../authConfig.ts";
 
 export function useAuthSession(): AuthSession {
@@ -9,9 +8,10 @@ export function useAuthSession(): AuthSession {
 
     // Use memo, only need to updated returned value when auth changes
     return useMemo((): AuthSession => {
+
         const profile = auth.user?.profile as any;
         const clientId = import.meta.env.VITE_KEYCLOAK_CLIENT;
-        const roles : ApplicationRole[] = profile?.resource_access?.[clientId]?.roles ?? [];
+        const roles : string[] = profile?.resource_access?.[clientId]?.roles ?? [];
 
         return {
             isAuthenticated: auth.isAuthenticated,

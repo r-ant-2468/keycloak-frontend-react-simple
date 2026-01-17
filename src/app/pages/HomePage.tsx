@@ -1,5 +1,4 @@
 import {useAuthSession} from "../../features/auth/hooks/useAuthSession.ts";
-import type {ApplicationRole} from "../../features/auth/types/ApplicationRole.ts";
 
 function HomePage(){
     const {connectedUser} = useAuthSession();
@@ -12,7 +11,7 @@ function HomePage(){
 
             <h2 className="text-lg font-semibold mb-3">Your Roles:</h2>
             <div className="flex gap-2 flex-wrap">
-                {connectedUser.roles.map((role: ApplicationRole) => (
+                {connectedUser.roles.map((role: string) => (
                     <span key={role} className="px-3 py-1 bg-gray-100 border rounded text-sm">
                         {role}
                     </span>

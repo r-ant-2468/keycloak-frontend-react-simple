@@ -9,7 +9,7 @@ function App() {
 
     const { isAuthenticated, isLoading } = useAuthSession();
 
-    // Make sure the app is not in a loading state before rendering a page
+    // Make sure authentication is not in a loading state before rendering a page
     if (isLoading) {
         return <div className="spinner" />;
     }
