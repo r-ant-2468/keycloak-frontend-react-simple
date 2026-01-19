@@ -6,7 +6,7 @@ import {signoutRedirectConfig} from "../authConfig.ts";
 export function useAuthSession(): AuthSession {
     const auth = useAuth();
 
-    // Use memo, only need to updated returned value when auth changes
+    // Use memo, only need to update AuthSession info when react oidc context auth changes
     return useMemo((): AuthSession => {
 
         const profile = auth.user?.profile as any;
@@ -22,7 +22,7 @@ export function useAuthSession(): AuthSession {
                 lastName: profile?.family_name ?? "",
                 roles: roles
             },
-            login: () => void auth.signinRedirect(), // Added login
+            login: () => auth.signinRedirect(),
             logout: () => auth.signoutRedirect(signoutRedirectConfig)
         }
     }, [auth]);
